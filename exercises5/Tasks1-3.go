@@ -39,18 +39,6 @@ func readNumbers(chnl chan int) {
 		fmt.Println("Ispis iz kanala 2:", v)
 	}
 }
-/*func mainGoroutine(chnl1 chan int, chnl2 chan int) {
-	for v := range chnl1 {
-		if v == 100 {
-			close(chnl1)
-		}
-		if rand.Intn(2) == 1 {
-			fmt.Println("Ispis iz kanala 1:", v)
-		} else {
-			chnl2 <- rand.Intn(10000 - 1000) + 1000
-		}
-	}
-}*/
 
 func main() {
 	// 1.
@@ -75,7 +63,6 @@ func main() {
 	chan2 := make(chan int, 20)
 	go writeNumbers(chan1)
 	go readNumbers(chan2)
-	// go mainGoroutine(chan1, chan2)
 	/*for v := range chan1 {
 		if v == 100 {
 			close(chan1)
