@@ -28,17 +28,18 @@ func GetGenesisBlock() *Block {
 	return b
 }
 func CreateBlock(number int, previousBlock *Block) *Block {
-	b := GetGenesisBlock()
-	b.Number = number
-	b.time = time.Now()
-	b.txs = []Transaction{}
-	b.prevBlock = previousBlock
+	b := &Block {
+		Number: number,
+		time: time.Now(),
+		txs: []Transaction{},
+		prevBlock: previousBlock,
+	}
 	return b
 }
 
 func main() {
 	fmt.Println("OK")
-	b1 := CreateBlock(1, nil)
+	b1 := CreateBlock(1, GetGenesisBlock())
 	b2 := CreateBlock(2, b1)
 	b1.AddTxs(Transaction{"1", "2", 11})
 	fmt.Println(b1)
